@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="RAHAF - Content Creator">
+<meta property="og:title" content="RAHAF">
+<meta property="og:description" content="Content Creator">
+<meta property="og:image" content="avatar.jpg">
+<link rel="icon" href="avatar.jpg">
+<title>RAHAF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&family=Cormorant+Garamond:wght@500&family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+  /* Layout: one centered column, avatar + handle on top, full-width pill links stacked below.
+     Single committed look (soft rose ground, pale mint pills) to match the reference page. */
+  :root {
+    --bg: #FFFFFF;
+    --bg-glow: #F3F3F3;
+    --pill: #111111;
+    --pill-hover: #2B2B2B;
+    --pill-press: #000000;
+    --pill-fg: #FFFFFF;
+    --fg: #111111;
+    --muted: #6B6B6B;
+    --ring: #111111;
+    --avatar-a: #DDDDDD;
+    --avatar-b: #999999;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 6px 18px rgba(0, 0, 0, 0.06);
+    --font-latin: "Manrope", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --font-arabic: "Almarai", "Tajawal", "Segoe UI", system-ui, sans-serif;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    background-image: radial-gradient(900px 500px at 50% -10%, var(--bg-glow), transparent 70%);
+    color: var(--fg);
+    font-family: var(--font-latin), var(--font-arabic);
+    min-height: 100%;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: clamp(40px, 8vh, 72px) 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 124px;
+    height: 124px;
+    max-width: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, var(--avatar-a), var(--avatar-b));
+    box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--ring), var(--shadow);
+    font-family: var(--font-latin);
+    font-weight: 800;
+    font-size: 48px;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+    user-select: none;
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .handle {
+    margin: 6px 0 0;
+    font-family: "Cormorant Garamond", "Didot", "Bodoni 72", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(46px, 14vw, 64px);
+    letter-spacing: 0.22em;
+    padding-left: 0.22em;
+    line-height: 1;
+    color: var(--fg);
+  }
+
+  .tagline {
+    margin: 0;
+    font-family: "Cormorant Garamond", "Didot", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(15px, 4.4vw, 19px);
+    letter-spacing: 0.32em;
+    padding-left: 0.32em;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: min(100%, 420px);
+    color: var(--fg);
+  }
+  .rule::before, .rule::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--fg);
+  }
+  .rule svg { width: 16px; height: 16px; flex: none; fill: currentColor; }
+
+  .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 64px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: var(--pill);
+    color: var(--pill-fg);
+    text-decoration: none;
+    font-family: var(--font-latin), var(--font-arabic);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.25;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+  }
+  .pill .ar {
+    font-family: var(--font-arabic);
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .pill:hover { background: var(--pill-hover); transform: translateY(-1px); }
+  .pill:active { background: var(--pill-press); transform: translateY(0) scale(0.99); }
+  .pill:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
+
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 12px;
+    font-family: var(--font-arabic);
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .contact .addr {
+    font-family: var(--font-latin);
+    font-weight: 600;
+    color: var(--fg);
+    user-select: all;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+  .copy {
+    appearance: none;
+    border: 0;
+    background: var(--pill);
+    color: var(--pill-fg);
+    font-family: var(--font-arabic);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+  }
+  .copy:hover { background: var(--pill-hover); }
+  .copy:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
+
+  footer {
+    font-family: var(--font-latin);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pill, .pill:hover, .pill:active { transition: none; transform: none; }
+  }
+</style>
+
+</head>
+<body>
+<main>
+  <header class="profile">
+    <div class="avatar"><img src="avatar.jpg" alt="Rahaf" width="600" height="600"></div>
+    <h1 class="handle">RAHAF</h1>
+    <p class="tagline">Content Creator</p>
+    <div class="rule" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+  </header>
+
+  <ul class="links">
+    <li><a class="pill" href="https://www.snapchat.com/add/its.rahaf6" target="_blank" rel="noopener">Snapchat</a></li>
+    <li><a class="pill" href="https://www.instagram.com/its_rahaf6" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a class="pill" href="https://www.tiktok.com/@its_rahaf6" target="_blank" rel="noopener">Tiktok</a></li>
+    <li><a class="pill" href="https://x.com/its_rahaf6" target="_blank" rel="noopener">X <span aria-hidden="true">·</span> Twitter</a></li>
+    <li><a class="pill" href="https://www.youtube.com/@its.rahaf6" target="_blank" rel="noopener">Youtube</a></li>
+    <li><a class="pill" href="https://boutiqaat.go.link/celeb_id/9961?adj_t=1ngwfzb0" target="_blank" rel="noopener">Boutiqaat</a></li>
+    <li><a class="pill" href="mailto:its.rahaf.6@gmail.com">Email</a></li>
+    <li><a class="pill" href="https://api.whatsapp.com/send/?phone=966566747918&amp;app_absent=0" target="_blank" rel="noopener">Business Inquiries</a></li>
+  </ul>
+
+  <div class="contact">
+    <span>For business:</span>
+    <span class="addr" id="email-addr">its.rahaf.6@gmail.com</span>
+    <button class="copy" id="copy-email" type="button">Copy</button>
+  </div>
+
+  <footer>@its_rahaf6</footer>
+</main>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copy-email');
+    var addr = document.getElementById('email-addr');
+    if (!btn || !addr) return;
+    var original = btn.textContent;
+    function selectText() {
+      try {
+        var range = document.createRange();
+        range.selectNodeContents(addr);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      var text = addr.textContent.trim();
+      var done = function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = original; }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, selectText);
+      } else {
+        selectText();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
